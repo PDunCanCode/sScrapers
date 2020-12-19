@@ -1,6 +1,6 @@
 const { GoogleSpreadsheet } = require("google-spreadsheet");
 
-class Sheet {
+module.export = class Sheet {
   constructor() {
     this.doc = new GoogleSpreadSheet(
       "1hf_ug7axD0RB43Ci4OVijw5qZ98aQrTGOf9LO3__nPw"

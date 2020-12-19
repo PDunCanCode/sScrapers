@@ -1,12 +1,23 @@
-const { GoogleSpreadsheet } = require('google-spreadsheet')
+const Sheet = require("./sheet");
+const fetch = require("node-fetch");
+(async function () {
+  const res = await fetch(
+    "https://jobs.github.com/positions.json?description=python&location=remote"
+  );
+  const json = await res.json();
+  const rows = json.map((job) => {
+    return {
+      company: job.company,
+      title: job.title,
+      location: job.location,
+      date: job.created_at,
+      url: job.url,
+    };
+  });
+  const sheet = new Sheet();
+  await sheet.load();
 
-const doc = new GoogleSpreadSheet('1hf_ug7axD0RB43Ci4OVijw5qZ98aQrTGOf9LO3__nPw')
+  await sheet.addRows(rows);
 
-(async function() {
-    
-    console.log(doc.title)
-    await doc.updateProperties({ title: 'rebnamed doc' })
-
-    const sheet = doc.sheetsByIndex[0];
-    
-})
+  console.log({ json });
+})();
