@@ -1,7 +1,8 @@
 const fetch = require("node-fetch");
 
 (async function () {
-  const res = await fetch("https://news.ycombinator.com/");
+  const res = await fetch("https://explodingtopics.com/topics-this-month");
   const text = await res.text();
-  console.log({ text });
+  const found = text.toLowecase().includes("ancestral");
+  console.log({ found });
 })();
