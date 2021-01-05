@@ -1,7 +1,6 @@
 interface Named {
-    readonly name: string;
+  readonly name: string;
 }
-
 
 interface Greetable extends Named {
   name: string;
@@ -23,3 +22,41 @@ class Person implements Greetable {
 let user1: Greetable;
 
 user1 = new Person("Paul");
+
+interface Bird {
+  type: "bird";
+  flyingSpeed: number;
+}
+
+interface Horse {
+  type: "horse";
+  runningSpeed: number;
+}
+
+type Animal = Bird | Horse;
+
+function moveAnimal(animal: Animal) {
+  let speed;
+  switch (animal.type) {
+    case "bird":
+      speed = animal.flyingSpeed;
+      break;
+    case "horse":
+      speed = animal.runningSpeed;
+  }
+  console.log("moving at speed: " + speed);
+}
+moveAnimal({ type: "bird", flyingSpeed: 10 });
+
+const userInputElement = document.getElementById("user-input");
+if (userInputElement) {
+  (userInputElement as HTMLInputElement).value = "Hello there.";
+}
+
+interface ErrorContainer {
+  [key: string]: string;
+}
+
+const errorBag: ErrorContainer = {
+  1: "Not a valid email",
+};
