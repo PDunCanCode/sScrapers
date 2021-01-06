@@ -1,3 +1,5 @@
+import { isConstructorDeclaration } from "typescript";
+
 function Logger(logString: string) {
   return function (constructor: Function) {
     console.log(logString);
@@ -6,11 +8,19 @@ function Logger(logString: string) {
 }
 
 function WithTemplate(template: string, hookId: string) {
-  return function (_: Function) {
-    const hookEl = document.getElementById(hookId);
-    if (hookEl) {
-      hookEl.innerHTML = template;
-    }
+  return function <T extends { new (...args: any[]): { name: string } }>(
+    originalConstructor: T
+  ) {
+    return class extends originalConstructor {
+      constructor(..._: any[]) {
+        super();
+        const hookEl = document.getElementById(hookId);
+        if (hookEl) {
+          hookEl.innerHTML = template;
+          hookEl.querySelector("h1")!.textContent = this.name;
+        }
+      }
+    };
   };
 }
 
