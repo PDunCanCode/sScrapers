@@ -13,3 +13,29 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 });
 
 app.listen(3000);
+
+
+// fizz buzz
+
+function fizzBuzz(num: number | string) {
+  for (let i = 0; i < 100; i++){
+    if (i % 15 === 0) {console.log('fizzbuzz');
+  }
+  } 
+}
+
+enum PromiseStates {
+  pending, 
+  fulfilled, 
+  rejected,
+}
+
+const FakePromise = {
+  state: PromiseStates.pending,
+  resolve: function () {
+    this.state = PromiseStates.fulfilled;
+  },
+  reject: function () {
+    this.state = PromiseStates.rejected
+  }
+}
