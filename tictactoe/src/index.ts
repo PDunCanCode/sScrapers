@@ -138,3 +138,18 @@ function init() {
 }
 
 init();
+
+class Fruit {
+  name: string;
+  color: string;
+  sweetness: number;
+  constructor(name: string, color: string, sweetness: number) {
+    this.name = name;
+    this.color = color;
+    this.sweetness = sweetness
+  }
+  fullName(){
+    const isSweet = this.sweetness > 50;
+    
+  }
+}
