@@ -17,6 +17,9 @@ function findElement(arr, element, comparatorFn) {
 
 const arr = [5, 3, 10, -10, 33, 51];
 
+arr.findIndex((el) => el === 5);
+console.log(el)
+
 console.log(findElement(arr, 10));
 
 const objects = [
