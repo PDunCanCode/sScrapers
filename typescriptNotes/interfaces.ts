@@ -11,8 +11,9 @@ interface Greetable extends Named {
 class Person implements Greetable {
   name: string;
   age: number;
-  constructor(n: string) {
+  constructor(n: string, a: number) {
     this.name = n;
+    this.age = a;
   }
   greet(phrase: string) {
     console.log(phrase + " " + this.name);
@@ -21,7 +22,7 @@ class Person implements Greetable {
 
 let user1: Greetable;
 
-user1 = new Person("Paul");
+user1 = new Person("Paul", 38);
 
 interface Bird {
   type: "bird";

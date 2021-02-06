@@ -1,0 +1,30 @@
+<%- include('includes/head.ejs') %>
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  
+</head>
+
+<body>
+    <%- include('includes/navigation.ejs') %>
+    <div class="todo">
+        <div class="container">
+          <header class="todo__header">
+          
+              <h1><span id="todaysDay">Monday</span>'s Todos</h1>
+              <span id="todaysDate">December 30, 2020</span>
+            </div>
+          </header>
+          <div class="todo__input wrap">
+            <form action="" id="form">
+              <input type="text" id="todoInput" placeholder="Enter a Todo" />
+              <button class="todo__btn">Add</button>
+            </form>
+          </div>
+          <ul class="todo__list wrap"></ul>
+        </div>
+      
+      
+      <script src="script.js"></script>
+    
+
+<%- include('includes/end.ejs') %>
